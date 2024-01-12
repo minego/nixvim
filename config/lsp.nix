@@ -84,6 +84,7 @@ in
 		'';
 	};
 
+	plugins.lspkind.enable				= true;
 	plugins.nvim-lightbulb.enable		= true;
 
 	plugins.none-ls = {

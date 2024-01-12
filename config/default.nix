@@ -17,9 +17,12 @@
 
 		./treesitter.nix
 		./telescope.nix
+		./completion.nix
+
 		./git.nix
 		./dap.nix
 		./lsp.nix
+
 		./cmake.nix
 
 # TODO Convert the rest of these

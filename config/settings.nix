@@ -57,6 +57,7 @@ in
 			colorcolumn			= "80";
 			termguicolors		= true;
 
+			completeopt			= "menuone,longest,noselect,preview";
 
 			wildignore			= "*.swp,*.o,*.la,*.lo,*.a";
 			suffixes			= "*.swp,*.o,*.la,*.lo,*.a";
