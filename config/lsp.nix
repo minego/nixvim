@@ -4,13 +4,6 @@ let
 	util = import ./utils.nix {inherit lib;};
 in
 {
-	extraPlugins = [
-		(pkgs.vimUtils.buildVimPlugin {
-			name = "cspell";
-			src = inputs.cspell;
-		})
-	];
-
 	plugins.lsp = {
 		enable							= true;
 
@@ -113,15 +106,13 @@ in
 		};
 
 		extraOptions.sources = [
-			{ __raw = "require'cspell'.diagnostics";	}
-			{ __raw = "require'cspell'.code_actions";	}
+			{ __raw = "require'null-ls'.builtins.diagnostics.codespell ";	}
 		];
 	};
 
-	# null-ls has support for codespell and cspell, but they need to be in
+	# null-ls has support for codespell
 	# the path.
 	extraPackages = [
-		pkgs.nodePackages.cspell
 		pkgs.codespell
 	];
 }
