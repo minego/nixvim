@@ -46,7 +46,6 @@ in
 				name							= "quickfix",
 				opts = {
 					show						= "always",
-					-- show						= "only_on_error",
 					auto_close_when_success		= true,
 
 					position					= "bot",
