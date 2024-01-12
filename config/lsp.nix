@@ -4,6 +4,14 @@ let
 	util = import ./utils.nix {inherit lib;};
 in
 {
+	extraConfigLuaPre = ''
+		-- Create a client capabilities, so that we can override the
+		-- offsetEncoding used by clangd. This is needed to make clangd and
+		-- null-ls play nice together.
+		local clangd_capabilities = vim.lsp.protocol.make_client_capabilities()
+		clangd_capabilities.offsetEncoding = { "utf-16" }
+	'';
+
 	plugins.lsp = {
 		enable							= true;
 
@@ -12,6 +20,10 @@ in
 				enable					= true;
 
 				extraOptions = {
+					capabilities		= util.mkRaw "clangd_capabilities";
+
+					# This is needed so that 'cmake-tools' can tell the LSP
+					# where to find compile_commands.json
 					on_new_config		= util.mkRaw ''
 						function(new_config, new_cwd)
 							local status, cmake = pcall(require, "cmake-tools")
@@ -106,7 +118,8 @@ in
 		};
 
 		extraOptions.sources = [
-			{ __raw = "require'null-ls'.builtins.diagnostics.codespell ";	}
+			{ __raw = "require'null-ls'.builtins.diagnostics.codespell";	}
+			{ __raw = "require'null-ls'.builtins.diagnostics.cmake_lint";	}
 		];
 	};
 

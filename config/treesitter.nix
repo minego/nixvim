@@ -19,7 +19,7 @@ in
 	};
 
 	plugins.rainbow-delimiters = {
-		enable					= true;
+		enable					= false;
 	};
 
 	plugins.treesitter-context = {

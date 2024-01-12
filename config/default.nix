@@ -24,12 +24,16 @@
 
 # TODO Convert the rest of these
 # go.lua
-# rest.lua
+#	- neotest
+#	- neotest-go
+#	- goimpl
+#	- vim-go-coverage
+#	- nvim-dap-go
 # nvim-cmp
 #
 # - Why doesn't cmake debug work?
-# - cspell is way too aggressive...
-# - put it in git already
+# - Review rest of config and make sure I'm not missing anything...
+# - Look through other nixvim modules and possibly add more stuff?
 
 	];
 
