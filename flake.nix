@@ -28,7 +28,7 @@
 		nvim-notify					= { url = "github:rcarriga/nvim-notify";						flake = false; };
 	};
 
-	outputs = { nixpkgs, nixvim, flake-utils, ... } @inputs:
+	outputs = { self, nixpkgs, nixvim, flake-utils, ... } @inputs:
 
 	flake-utils.lib.eachDefaultSystem (system:
 		let
@@ -61,7 +61,7 @@
 	) // {
 		overlays.default = final: prev: {
 			# Replace the 'neovim' in nixpkgs with our own
-			neovim					= final.packages.${prev.system}.default;
+			neovim					= self.packages.${prev.system}.default;
 		};
 	};
 }
