@@ -57,6 +57,15 @@
 				# Lets you run `nix run .` to start nixvim
 				default = nvim;
 			};
+
+			_module.args.pkgs = import inputs.nixpkgs {
+				inherit system;
+				overlays = [
+					(final: prev: {
+						neovim = final.packages.${prev.system}.default;
+					})
+				];
+			};
 		};
 	};
 }
