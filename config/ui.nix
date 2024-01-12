@@ -162,6 +162,9 @@ in
 		enable							= true;
 	};
 
+	plugins.startify = {
+		enable							= true;
+	};
 
 	extraConfigLua = ''
 		-- Make buffer scoped to tabs
