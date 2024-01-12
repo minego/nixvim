@@ -33,18 +33,14 @@
 
 		perSystem = { pkgs, system, ... }:
 		let
-			nixpkgs.overlays = [
-				inputs.gitlab.overlay
-			];
-
 			nixvimLib	= nixvim.lib.${system};
 			nixvim'		= nixvim.legacyPackages.${system};
 			nvim		= nixvim'.makeNixvimWithModule {
 				inherit pkgs;
 
-				module = import ./config { inherit nixpkgs pkgs inputs; };
+				module = import ./config { inherit pkgs inputs; };
 
-				extraSpecialArgs = { inherit nixpkgs pkgs inputs; };
+				extraSpecialArgs = { inherit pkgs inputs; };
 			};
 		in {
 			checks = {
