@@ -128,6 +128,18 @@ in
 	# the path.
 	extraPackages = [
 		pkgs.codespell
-		pkgs.cmake-format
+
+		(pkgs.symlinkJoin {
+			name = "cmake-format-wrapped";
+			paths = [
+				# Wrap cmake-lint to set sane defaults - What kind of monster
+				# would report a lint error for using tabs!?
+				(pkgs.writeShellScriptBin "cmake-lint" ''
+					exec "${pkgs.cmake-format}/bin/cmake-lint --tab-size 4 --use-tabchars --disabled-codes C0301 $@"
+				'')
+
+				pkgs.cmake-format
+			];
+		})
 	];
 }
