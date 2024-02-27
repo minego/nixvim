@@ -128,5 +128,6 @@ in
 	# the path.
 	extraPackages = [
 		pkgs.codespell
+		pkgs.cmake-format
 	];
 }
