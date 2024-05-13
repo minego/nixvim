@@ -1,4 +1,4 @@
-{ inputs, pkgs, nixpkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 let
 	util = import ./utils.nix {inherit lib;};
@@ -93,7 +93,7 @@ in
 		sources = {
 			code_actions = {
 				gitsigns.enable			= true;
-				shellcheck.enable		= true;
+				# shellcheck.enable		= true;
 				statix.enable			= true;
 			};
 
@@ -103,13 +103,13 @@ in
 				gitlint.enable			= true;
 				golangci_lint.enable	= true;
 				markdownlint.enable		= true;
-				shellcheck.enable		= true;
+				# shellcheck.enable		= true;
 				statix.enable			= true;
 			};
 
 			formatting = {
-				trim_newlines.enable	= true;
-				trim_whitespace.enable	= true;
+				# trim_newlines.enable	= true;
+				# trim_whitespace.enable	= true;
 				markdownlint.enable		= true;
 				gofmt.enable			= true;
 				golines.enable			= true;

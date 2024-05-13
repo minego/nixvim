@@ -1,32 +1,21 @@
-{ lib, inputs, pkgs, nixpkgs, ... }:
+{ ... }:
 
-let
-	util = import ./utils.nix {inherit lib;};
-in
 {
-	plugins.nvim-cmp = {
+	plugins.cmp = {
 		enable										= true;
-		sources = [
-			{ name									= "path";			}
-		];
+		settings = {
+			completion.autocomplete					= false;
 
-		completion.autocomplete						= false;
+			mapping = {
+				"<C-Space>"							= "cmp.mapping.complete()";
+				"<CR>"								= "cmp.mapping.confirm({ select = true })";
 
-		mapping = {
-			"<C-Space>"								= "cmp.mapping.complete()";
-			"<CR>"									= "cmp.mapping.confirm({ select = true })";
+				"<C-e>"								= "cmp.mapping.close()";
+				"<C-d>"								= "cmp.mapping.scroll_docs(-4)";
+				"<C-f>"								= "cmp.mapping.scroll_docs(4)";
 
-			"<C-e>"									= "cmp.mapping.close()";
-			"<C-d>"									= "cmp.mapping.scroll_docs(-4)";
-			"<C-f>"									= "cmp.mapping.scroll_docs(4)";
-
-			"<S-Tab>" = {
-				action								= "cmp.mapping.select_prev_item()";
-				modes								= [ "i" "s" ];
-			};
-			"<Tab>" = {
-				action								= "cmp.mapping.select_next_item()";
-				modes								= [ "i" "s" ];
+				"<S-Tab>"							= "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+				"<Tab>"								= "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
 			};
 		};
 	};

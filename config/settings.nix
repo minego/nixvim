@@ -15,7 +15,7 @@ in
 			netrw_liststyle		= 3;	# tree view
 		};
 
-		options = {
+		opts = {
 			swapfile			= false;
 			ruler				= true;
 			background			= "dark";

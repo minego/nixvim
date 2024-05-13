@@ -10,7 +10,9 @@
 
 	plugins.gitsigns = {
 		enable					= true;
-		signcolumn				= true;
+		settings = {
+			signcolumn			= true;
+		};
 	};
 
 	plugins.neogit = {
